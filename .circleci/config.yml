@@ -37,10 +37,11 @@ jobs:
       - run:
           name: Run Lint
           command: npm run lint
-      - run:
-          name: Run Tests
-          command: npm run test
+      # - run:
+      #     name: Run Tests
+      #     command: npm run test
 
+  jobs:
   db-setup-and-test:
     executor: db-executor
     steps:
@@ -48,6 +49,9 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install default-mysql-server
       - run: mysql -uroot -ppassword -h127.0.0.1 -e "CREATE DATABASE IF NOT EXISTS akdenizin_incisi_api_db;"
       - run: mysql -uroot -ppassword -h127.0.0.1 akdenizin_incisi_api_db < ./database/database-schema.sql
+      - run:
+          name: Install Dependencies
+          command: npm install
       - run: node node_modules/db-migrate/bin/db-migrate up --config ./database/test-database.json -e test
       - run: mysql -uroot -ppassword -h127.0.0.1 akdenizin_incisi_api_db < ./database/seed-data.sql
       - run:

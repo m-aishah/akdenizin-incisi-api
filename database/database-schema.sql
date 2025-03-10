@@ -72,8 +72,8 @@ CREATE TABLE events(
   picture_url VARCHAR(500),
   age_limit int,
   additonal_info TEXT,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (created_by) REFERENCES users(user_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -109,7 +109,7 @@ CREATE TABLE system_prompts(
   created_for int NOT NULL,
   prompt_text TEXT NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (created_for) REFERENCES users(user_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -120,11 +120,11 @@ CREATE TABLE conversations(
   created_by int NOT NULL,
   messages JSON,
   system_prompt_id int,
-  is_deleted BOOLEAN DEFAULT FALSE
+  is_deleted BOOLEAN DEFAULT FALSE,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   deleted_at DATETIME,
-  FOREIGN KEY (created_by) REFERENCES users(user_id),
+  FOREIGN KEY (created_by) REFERENCES users(user_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- itinerary: to keep track of itineraries created by users
@@ -141,7 +141,7 @@ CREATE TABLE itinerary(
   proposed_end_date DATETIME,
   picture_url VARCHAR(500),
   is_private BOOLEAN DEFAULT TRUE,
-  is_deleted BOOLEAN DEFAULT FALSE
+  is_deleted BOOLEAN DEFAULT FALSE,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   deleted_at DATETIME,
@@ -205,7 +205,7 @@ CREATE TABLE transportation_options(
 
 DROP TABLE IF EXISTS bus_services;
 CREATE TABLE bus_services(
-  transportation_option_id
+  transportation_option_id int NOT NULL,
   bus_service_id int AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   description TEXT,
@@ -216,16 +216,16 @@ CREATE TABLE bus_services(
   phone_number VARCHAR(20),
   email VARCHAR(50),
   headquarter_location VARCHAR(50) NOT NULL,
-  bus_service_picture URL VARCHAR(500),
+  bus_service_picture VARCHAR(500),
   additional_info TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (transportation_option_id) REFERENCES transportation_options(transportation_option_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS taxi_services;
 CREATE TABLE taxi_services(
-  transportation_option_id
+  transportation_option_id int NOT NULL,
   taxi_service_id int AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   description TEXT,
@@ -235,16 +235,16 @@ CREATE TABLE taxi_services(
   phone_number VARCHAR(20),
   email VARCHAR(50),
   headquarter_location VARCHAR(50) NOT NULL,
-  picture URL VARCHAR(500),
+  picture VARCHAR(500),
   additional_info TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (transportation_option_id) REFERENCES transportation_options(transportation_option_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS car_rental_services;
 CREATE TABLE car_rental_services(
-  transportation_option_id
+  transportation_option_id int NOT NULL,
   car_rental_service_id int AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   description TEXT,
@@ -254,10 +254,10 @@ CREATE TABLE car_rental_services(
   phone_number VARCHAR(20),
   email VARCHAR(50),
   headquarter_location VARCHAR(50) NOT NULL,
-  picture URL VARCHAR(500),
+  picture VARCHAR(500),
   additional_info TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (transportation_option_id) REFERENCES transportation_options(transportation_option_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -272,9 +272,9 @@ CREATE TABLE transportation_ratings(
   rating FLOAT NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (transportation_option_id) REFERENCES transportation_options(transportation_option_id),
-  FOREIGN KEY (rated_by) REFERENCES users(user_id)
-  FOREIGN KEY (car_rental_service_id) REFERENCES car_rental_services(car_rental_service_id)
-  FOREIGN KEY (taxi_service_id) REFERENCES taxi_services(taxi_service_id)
+  FOREIGN KEY (rated_by) REFERENCES users(user_id),
+  FOREIGN KEY (car_rental_service_id) REFERENCES car_rental_services(car_rental_service_id),
+  FOREIGN KEY (taxi_service_id) REFERENCES taxi_services(taxi_service_id),
   FOREIGN KEY (bus_service_id) REFERENCES bus_services(bus_service_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -295,7 +295,7 @@ CREATE TABLE routes(
   departure_city_id int NOT NULL,
   arrival_city_id int NOT NULL,
   FOREIGN KEY (departure_city_id) REFERENCES cities(city_id),
-  FOREIGN KEY (arrival_city_id) REFERENCES cities(city_id),
+  FOREIGN KEY (arrival_city_id) REFERENCES cities(city_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS bus_trips;
@@ -312,7 +312,7 @@ CREATE TABLE bus_trips(
   is_deleted BOOLEAN DEFAULT FALSE,
   additional_info TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   deleted_at DATETIME,
   FOREIGN KEY (route_id) REFERENCES routes(route_id),
   FOREIGN KEY (bus_service_id) REFERENCES bus_services(bus_service_id)

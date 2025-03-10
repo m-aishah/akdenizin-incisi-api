@@ -17,7 +17,6 @@ executors:
           MYSQL_PASSWORD: "password"
           MYSQL_ROOT_PASSWORD: "password"
     working_directory: ~/app
-    resource_class: large
 
 jobs:
   lint-and-test:
@@ -55,14 +54,14 @@ jobs:
           command: npm install
       - run: node node_modules/db-migrate/bin/db-migrate up --config ./database/test-database.json -e test
       - run: mysql -uroot -ppassword -h127.0.0.1 akdenizin_incisi_api_db < ./database/seed-data.sql
-      - run:
-          name: Run Integration Tests
-          command: npm run integration-test
-          environment:
-            DB_NAME: akdenizin_incisi_api_db
-            DB_USER: root
-            DB_HOST: 127.0.0.1
-            DB_PASSWORD: password
+      # - run: # Can't run yet cause on free plan
+      #     name: Run Integration Tests
+      #     command: npm run integration-test
+      #     environment:
+      #       DB_NAME: akdenizin_incisi_api_db
+      #       DB_USER: root
+      #       DB_HOST: 127.0.0.1
+      #       DB_PASSWORD: password
 
 workflows:
   version: 2

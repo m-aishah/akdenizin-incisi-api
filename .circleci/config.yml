@@ -17,6 +17,7 @@ executors:
           MYSQL_PASSWORD: "password"
           MYSQL_ROOT_PASSWORD: "password"
     working_directory: ~/app
+    resource_class: large
 
 jobs:
   lint-and-test:

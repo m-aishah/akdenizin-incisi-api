@@ -40,27 +40,28 @@ jobs:
       - run:
           name: Run Tests
           command: npm run test
-  # db-setup-and-test:
-  #   executor: db-executor
-  #   steps:
-  #     - checkout
-  #     - run: sudo apt-get update && sudo apt-get install default-mysql-server
-  #     - run: mysql -uroot -ppassword -h127.0.0.1 -e "CREATE DATABASE IF NOT EXISTS akdenizin_incisi_api_db;"
-  #     - run: mysql -uroot -ppassword -h127.0.0.1 akdenizin_incisi_api_db < ./database/database-schema.sql
-  #     - run: node node_modules/db-migrate/bin/db-migrate up --config ./database/test-database.json -e test
-  #     - run: mysql -uroot -ppassword -h127.0.0.1 akdenizin_incisi_api_db < ./database/seed-data.sql
-  #     - run:
-  #         name: Run Integration Tests
-  #         command: npm run integration-test
-  #         environment:
-  #           DB_NAME: akdenizin_incisi_api_db
-  #           DB_USER: root
-  #           DB_HOST: 127.0.0.1
-  #           DB_PASSWORD: password
+
+  db-setup-and-test:
+    executor: db-executor
+    steps:
+      - checkout
+      - run: sudo apt-get update && sudo apt-get install default-mysql-server
+      - run: mysql -uroot -ppassword -h127.0.0.1 -e "CREATE DATABASE IF NOT EXISTS akdenizin_incisi_api_db;"
+      - run: mysql -uroot -ppassword -h127.0.0.1 akdenizin_incisi_api_db < ./database/database-schema.sql
+      - run: node node_modules/db-migrate/bin/db-migrate up --config ./database/test-database.json -e test
+      - run: mysql -uroot -ppassword -h127.0.0.1 akdenizin_incisi_api_db < ./database/seed-data.sql
+      - run:
+          name: Run Integration Tests
+          command: npm run integration-test
+          environment:
+            DB_NAME: akdenizin_incisi_api_db
+            DB_USER: root
+            DB_HOST: 127.0.0.1
+            DB_PASSWORD: password
 
 workflows:
   version: 2
   main:
     jobs:
       - lint-and-test
-      # - db-setup-and-test
+      - db-setup-and-test

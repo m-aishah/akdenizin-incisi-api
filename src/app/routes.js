@@ -1,15 +1,16 @@
 const express = require("express");
 
-const { ADMIN } = require("~root/constants/userTypes");
+// const { ADMIN } = require("~root/constants/userTypes");
 const postLogin = require("./controllers/users/login");
 const postUser = require("./controllers/users/register");
 const putUserDetails = require("./controllers/users/putUserDetails");
 const authentication = require("./middlewares/authentication");
-const authorise = require("./middlewares/authorisation");
+// const authorise = require("./middlewares/authorisation");
 const getUserTypes = require("./controllers/users/userTypes");
 const putPassword = require("./controllers/password-recovery/putPassword");
 const postRecoveryRequest = require("./controllers/password-recovery/postRecoveryRequest");
 const healthcheck = require("./platform/healthcheck");
+const getUserInformation = require("./controllers/users/getUserInformation");
 
 const router = express.Router();
 
@@ -18,14 +19,15 @@ router.post("/login", postLogin);
 
 router.post(
   "/register",
-  authentication,
-  authorise({ roles: [ADMIN] }),
+  // authentication,
+  // authorise({ roles: [ADMIN] }),
   postUser
 );
 
 router.put("/edit/user", authentication, putUserDetails);
 
 router.get("/user-types", getUserTypes);
+router.get("/user-information/", authentication, getUserInformation);
 
 router.post("/recovery-request", postRecoveryRequest);
 

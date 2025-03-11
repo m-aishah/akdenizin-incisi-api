@@ -10,6 +10,7 @@ const getUserTypes = require("./controllers/users/userTypes");
 const putPassword = require("./controllers/password-recovery/putPassword");
 const postRecoveryRequest = require("./controllers/password-recovery/postRecoveryRequest");
 const healthcheck = require("./platform/healthcheck");
+const getUserInformation = require("./controllers/users/getUserInformation");
 
 const router = express.Router();
 
@@ -18,14 +19,15 @@ router.post("/login", postLogin);
 
 router.post(
   "/register",
-  authentication,
-  authorise({ roles: [ADMIN] }),
+  // authentication,
+  // authorise({ roles: [ADMIN] }),
   postUser
 );
 
 router.put("/edit/user", authentication, putUserDetails);
 
 router.get("/user-types", getUserTypes);
+router.get("/user-information/", authentication, getUserInformation);
 
 router.post("/recovery-request", postRecoveryRequest);
 

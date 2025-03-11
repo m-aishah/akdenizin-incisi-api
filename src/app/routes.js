@@ -12,6 +12,8 @@ const postRecoveryRequest = require("./controllers/password-recovery/postRecover
 const healthcheck = require("./platform/healthcheck");
 const getUserInformation = require("./controllers/users/getUserInformation");
 
+const getEvents = require("./controllers/events/getEvents");
+
 const router = express.Router();
 
 // USER MANAGEMENT
@@ -31,4 +33,6 @@ router.get("/healthcheck", healthcheck);
 
 router.get("/user-information/", authentication, getUserInformation);
 
+// EVENTS
+router.get("/events", authentication, getEvents);
 module.exports = router;

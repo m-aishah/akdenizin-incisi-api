@@ -1,7 +1,6 @@
-const yup = require("yup");
+const handleAPIError = require("~root/utils/handleAPIError");
 const fetchUserInformation = require("~root/actions/users/fetchUserInformation");
 const getUserInformationSchema = require("./schemas/getUserInformationSchema");
-const handleAPIError = require("~root/utils/handleAPIError");
 
 const getUserInformation = async (req, res) => {
   const { userId } = req.user;

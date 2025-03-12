@@ -11,7 +11,7 @@ const selectEventById = ({ eventId }) => submitQuery`
         location,
         picture_url,
         age_limit,
-        additonal_info,
+        additional_info,
         created_at, 
         updated_at 
     FROM 

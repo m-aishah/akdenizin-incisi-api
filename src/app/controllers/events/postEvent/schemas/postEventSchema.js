@@ -15,7 +15,6 @@ const postEventSchema = yup.object().shape({
     .typeError("The description must be a string"),
   date: yup
     .date()
-    .strict()
     .required("The date is required")
     .label("Date")
     .typeError("The date must be a valid date"),

@@ -13,6 +13,7 @@ const healthcheck = require("./platform/healthcheck");
 const getUserInformation = require("./controllers/users/getUserInformation");
 
 const getEvents = require("./controllers/events/getEvents");
+const getEventById = require("./controllers/events/getEventById");
 
 const router = express.Router();
 
@@ -35,4 +36,6 @@ router.get("/user-information/", authentication, getUserInformation);
 
 // EVENTS
 router.get("/events", authentication, getEvents);
+
+router.get("/event-by-id/:eventId", getEventById);
 module.exports = router;

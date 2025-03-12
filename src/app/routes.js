@@ -13,6 +13,7 @@ const healthcheck = require("./platform/healthcheck");
 const getUserInformation = require("./controllers/users/getUserInformation");
 
 const getEvents = require("./controllers/events/getEvents");
+const getUnverifiedEvents = require("./controllers/events/getUnverifiedEvents");
 const getEventById = require("./controllers/events/getEventById");
 
 const router = express.Router();
@@ -36,6 +37,8 @@ router.get("/user-information", authentication, getUserInformation);
 
 // EVENTS
 router.get("/events", authentication, getEvents);
+
+router.get("/unverified-events", authentication, getUnverifiedEvents);
 
 router.get("/event/:eventId", getEventById);
 module.exports = router;

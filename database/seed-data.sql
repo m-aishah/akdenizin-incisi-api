@@ -26,7 +26,7 @@ VALUES
 ("Mehmet", "Kaya", "mehmet.kaya@example.com", "hashed_password_3", 3, "Local guide in Kyrenia.", "https://example.com/profiles/mehmet.jpg", "Chess, History", "Knows all the hidden gems in TRNC.");
 
 
-INSERT INTO events (created_by, is_verified, title, description, event_date, event_time, location, picture_url, age_limit, additonal_info)
+INSERT INTO events (created_by, is_verified, title, description, date, time, location, picture_url, age_limit, additional_info)
 VALUES 
 (2, TRUE, "Kyrenia Folk Dance Festival", "Experience traditional Turkish Cypriot folk dances.", "2023-12-15", "18:00:00", "Kyrenia Harbor", "https://example.com/events/kyrenia-folk-dance.jpg", 0, "Free entry for all ages."),
 (3, TRUE, "Bellapais Music Festival", "Annual music festival at Bellapais Abbey.", "2024-05-20", "20:00:00", "Bellapais Abbey", "https://example.com/events/bellapais-music.jpg", 12, "Bring your own seating."),

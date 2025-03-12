@@ -14,6 +14,7 @@ const getUserInformation = require("./controllers/users/getUserInformation");
 
 const getEvents = require("./controllers/events/getEvents");
 const getEventById = require("./controllers/events/getEventById");
+const postEvent = require("./controllers/events/postEvent");
 
 const router = express.Router();
 
@@ -38,4 +39,7 @@ router.get("/user-information", authentication, getUserInformation);
 router.get("/events", authentication, getEvents);
 
 router.get("/event/:eventId", authentication, getEventById);
+
+router.post("/event", authentication, postEvent);
+
 module.exports = router;

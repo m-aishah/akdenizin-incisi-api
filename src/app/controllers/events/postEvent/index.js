@@ -33,7 +33,7 @@ const postEvent = async (req, res) => {
       userId
     });
 
-    return res.status(200).send({
+    return res.status(201).send({
       eventId
     });
   } catch (err) {

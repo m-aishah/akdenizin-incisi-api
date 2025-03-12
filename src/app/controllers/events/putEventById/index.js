@@ -3,37 +3,38 @@ const modifyEvent = require("~root/actions/events/modifyEvent");
 const putEventByIdSchema = require("./schemas/putEventByIdSchema");
 
 const putEventById = async (req, res) => {
-  const { userId } = req.user;
+  const { eventId } = req.params;
   const {
     title,
     description,
     date,
     time,
     location,
-    picture_url,
-    age_limit,
-    additional_info
+    pictureUrl,
+    ageLimit,
+    additionalInfo,
+    isVerified,
+    updatedAt
   } = req.body;
 
   try {
-    await putEventByIdSchema.validate(
-      { title, description, date, time, location },
-      { abortEarly: false }
-    );
+    await putEventByIdSchema.validate({ eventId }, { abortEarly: false });
 
     await modifyEvent({
+      eventId,
       title,
       description,
       date,
       time,
       location,
-      picture_url,
-      age_limit,
-      additional_info,
-      userId
+      pictureUrl,
+      ageLimit,
+      additionalInfo,
+      isVerified,
+      updatedAt
     });
 
-    res.status(200).send({ success: true });
+    return res.status(200).send({ success: true });
   } catch (err) {
     return handleAPIError(res, err);
   }

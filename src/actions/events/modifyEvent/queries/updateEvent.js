@@ -53,11 +53,13 @@ const updateEvent = async ({
   }
 
   if (updates.length !== 0) {
-    await submitQuery`
-                UPDATE events
-                SET ${sqlReduce(updates)}
-                WHERE event_id = ${eventId}
-            `;
+    return submitQuery`
+            UPDATE 
+                events
+            SET 
+                ${updates.reduce(sqlReduce)}
+                WHERE 
+                    event_id = ${eventId}`;
   }
 
   return Promise.resolve();

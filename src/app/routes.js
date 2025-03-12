@@ -12,22 +12,18 @@ const postRecoveryRequest = require("./controllers/password-recovery/postRecover
 const healthcheck = require("./platform/healthcheck");
 const getUserInformation = require("./controllers/users/getUserInformation");
 
+const getEvents = require("./controllers/events/getEvents");
+
 const router = express.Router();
 
 // USER MANAGEMENT
 router.post("/login", postLogin);
 
-router.post(
-  "/register",
-  // authentication,
-  // authorise({ roles: [ADMIN] }),
-  postUser
-);
+router.post("/register", postUser);
 
 router.put("/edit/user", authentication, putUserDetails);
 
 router.get("/user-types", getUserTypes);
-router.get("/user-information/", authentication, getUserInformation);
 
 router.post("/recovery-request", postRecoveryRequest);
 
@@ -35,4 +31,8 @@ router.put("/update-password/:shortcode", putPassword);
 
 router.get("/healthcheck", healthcheck);
 
+router.get("/user-information/", authentication, getUserInformation);
+
+// EVENTS
+router.get("/events", authentication, getEvents);
 module.exports = router;

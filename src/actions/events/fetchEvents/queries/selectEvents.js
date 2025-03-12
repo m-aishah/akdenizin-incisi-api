@@ -3,7 +3,7 @@ const { submitQuery, camelKeys } = require("~root/lib/database");
 const selectEvents = () => submitQuery`
     SELECT event_id,
         created_by,
-        is_verified
+        is_verified,
         title,
         description,
         date,

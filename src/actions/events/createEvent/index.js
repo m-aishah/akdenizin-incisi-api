@@ -7,9 +7,9 @@ const createEvent = async ({
   date,
   time,
   location,
-  picture_url,
-  age_limit,
-  additional_info
+  pictureUrl,
+  ageLimit,
+  additionalInfo
 }) => {
   const eventId = await insertEvent({
     userId,
@@ -18,9 +18,9 @@ const createEvent = async ({
     date,
     time,
     location,
-    picture_url,
-    age_limit,
-    additional_info
+    pictureUrl,
+    ageLimit,
+    additionalInfo
   });
 
   return eventId;

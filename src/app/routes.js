@@ -13,6 +13,7 @@ const healthcheck = require("./platform/healthcheck");
 const getUserInformation = require("./controllers/users/getUserInformation");
 
 const getEvents = require("./controllers/events/getEvents");
+const getEventById = require("./controllers/events/getEventById");
 
 const router = express.Router();
 
@@ -31,8 +32,10 @@ router.put("/update-password/:shortcode", putPassword);
 
 router.get("/healthcheck", healthcheck);
 
-router.get("/user-information/", authentication, getUserInformation);
+router.get("/user-information", authentication, getUserInformation);
 
 // EVENTS
 router.get("/events", authentication, getEvents);
+
+router.get("/event/:eventId", getEventById);
 module.exports = router;

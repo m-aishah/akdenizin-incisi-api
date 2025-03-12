@@ -41,7 +41,7 @@ router.get("/events", authentication, getEvents);
 
 router.get("/unverified-events", authentication, getUnverifiedEvents);
 
-router.get("/event/:eventId", getEventById);
+router.get("/event/:eventId", authentication, getEventById);
 
 router.post("/event", authentication, postEvent);
 

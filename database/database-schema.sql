@@ -39,7 +39,7 @@ CREATE TABLE users(
   bio TEXT,
   profile_picture_url VARCHAR(500),
   hobbies TEXT,
-  additonal_info TEXT,
+  additional_info TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_type_id) REFERENCES user_types(user_type_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE utf8mb4_unicode_ci;

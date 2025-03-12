@@ -19,7 +19,7 @@ VALUES (2, "tourist");
 INSERT INTO user_types (user_type_id, user_type)
 VALUES (3, "local");
 
-INSERT INTO users (first_name, last_name, email, password, user_type_id, bio, profile_picture_url, hobbies, additonal_info)
+INSERT INTO users (first_name, last_name, email, password, user_type_id, bio, profile_picture_url, hobbies, additional_info)
 VALUES 
 ("Ahmet", "Yılmaz", "ahmet.yilmaz@example.com", "hashed_password_1", 1, "Admin user for TRNC tourism app.", "https://example.com/profiles/ahmet.jpg", "Hiking, Photography", "Loves exploring historical sites."),
 ("Maria", "Andreou", "maria.andreou@example.com", "hashed_password_2", 2, "Tourist visiting TRNC for the first time.", "https://example.com/profiles/maria.jpg", "Reading, Traveling", "Interested in eco-friendly travel."),

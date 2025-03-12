@@ -19,14 +19,14 @@ VALUES (2, "tourist");
 INSERT INTO user_types (user_type_id, user_type)
 VALUES (3, "local");
 
-INSERT INTO users (first_name, last_name, email, password, user_type_id, bio, profile_picture_url, hobbies, additonal_info)
+INSERT INTO users (first_name, last_name, email, password, user_type_id, bio, profile_picture_url, hobbies, additional_info)
 VALUES 
 ("Ahmet", "Yılmaz", "ahmet.yilmaz@example.com", "hashed_password_1", 1, "Admin user for TRNC tourism app.", "https://example.com/profiles/ahmet.jpg", "Hiking, Photography", "Loves exploring historical sites."),
 ("Maria", "Andreou", "maria.andreou@example.com", "hashed_password_2", 2, "Tourist visiting TRNC for the first time.", "https://example.com/profiles/maria.jpg", "Reading, Traveling", "Interested in eco-friendly travel."),
 ("Mehmet", "Kaya", "mehmet.kaya@example.com", "hashed_password_3", 3, "Local guide in Kyrenia.", "https://example.com/profiles/mehmet.jpg", "Chess, History", "Knows all the hidden gems in TRNC.");
 
 
-INSERT INTO events (created_by, is_verified, title, description, event_date, event_time, location, picture_url, age_limit, additonal_info)
+INSERT INTO events (created_by, is_verified, title, description, date, time, location, picture_url, age_limit, additional_info)
 VALUES 
 (2, TRUE, "Kyrenia Folk Dance Festival", "Experience traditional Turkish Cypriot folk dances.", "2023-12-15", "18:00:00", "Kyrenia Harbor", "https://example.com/events/kyrenia-folk-dance.jpg", 0, "Free entry for all ages."),
 (3, TRUE, "Bellapais Music Festival", "Annual music festival at Bellapais Abbey.", "2024-05-20", "20:00:00", "Bellapais Abbey", "https://example.com/events/bellapais-music.jpg", 12, "Bring your own seating."),

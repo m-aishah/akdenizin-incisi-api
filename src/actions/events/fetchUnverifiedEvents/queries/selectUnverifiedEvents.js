@@ -1,9 +1,9 @@
 const { submitQuery, camelKeys } = require("~root/lib/database");
 
-const selectEvents = () => submitQuery`
+const selectUnverifiedEvents = () => submitQuery`
     SELECT event_id,
         created_by,
-        is_verified,
+        is_verified
         title,
         description,
         date,
@@ -17,7 +17,7 @@ const selectEvents = () => submitQuery`
     FROM 
         events
     WHERE 
-        is_verified = true
+        is_verified = false
 `;
 
-module.exports = camelKeys(selectEvents);
+module.exports = camelKeys(selectUnverifiedEvents);

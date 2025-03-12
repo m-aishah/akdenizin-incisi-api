@@ -39,7 +39,7 @@ CREATE TABLE users(
   bio TEXT,
   profile_picture_url VARCHAR(500),
   hobbies TEXT,
-  additonal_info TEXT,
+  additional_info TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_type_id) REFERENCES user_types(user_type_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -66,12 +66,12 @@ CREATE TABLE events(
   is_verified BOOLEAN DEFAULT FALSE,
   title VARCHAR(50) NOT NULL,
   description TEXT,
-  event_date DATETIME NOT NULL,
-  event_time TIME NOT NULL,
+  date DATETIME NOT NULL,
+  time TIME NOT NULL,
   location VARCHAR(50) NOT NULL,
   picture_url VARCHAR(500),
   age_limit int,
-  additonal_info TEXT,
+  additional_info TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (created_by) REFERENCES users(user_id)

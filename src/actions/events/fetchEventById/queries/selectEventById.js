@@ -6,12 +6,12 @@ const selectEventById = ({ eventId }) => submitQuery`
         is_verified,
         title,
         description,
-        event_date,
-        event_time,
+        date,
+        time,
         location,
         picture_url,
         age_limit,
-        additonal_info,
+        additional_info,
         created_at, 
         updated_at 
     FROM 

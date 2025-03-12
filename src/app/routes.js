@@ -37,5 +37,5 @@ router.get("/user-information", authentication, getUserInformation);
 // EVENTS
 router.get("/events", authentication, getEvents);
 
-router.get("/event/:eventId", getEventById);
+router.get("/event/:eventId", authentication, getEventById);
 module.exports = router;

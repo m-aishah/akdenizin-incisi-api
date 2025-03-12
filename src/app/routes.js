@@ -32,10 +32,10 @@ router.put("/update-password/:shortcode", putPassword);
 
 router.get("/healthcheck", healthcheck);
 
-router.get("/user-information/", authentication, getUserInformation);
+router.get("/user-information", authentication, getUserInformation);
 
 // EVENTS
 router.get("/events", authentication, getEvents);
 
-router.get("/event", getEventById);
+router.get("/event/:eventId", getEventById);
 module.exports = router;

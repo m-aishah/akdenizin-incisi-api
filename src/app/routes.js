@@ -16,6 +16,7 @@ const getEvents = require("./controllers/events/getEvents");
 const getUnverifiedEvents = require("./controllers/events/getUnverifiedEvents");
 const getEventById = require("./controllers/events/getEventById");
 const postEvent = require("./controllers/events/postEvent");
+const deleteEvent = require("./controllers/events/deleteEvent");
 
 const router = express.Router();
 
@@ -44,5 +45,7 @@ router.get("/unverified-events", authentication, getUnverifiedEvents);
 router.get("/event/:eventId", authentication, getEventById);
 
 router.post("/event", authentication, postEvent);
+
+router.delete("/event/:eventId", authentication, deleteEvent);
 
 module.exports = router;

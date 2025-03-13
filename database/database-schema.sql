@@ -69,9 +69,11 @@ CREATE TABLE events(
   date DATETIME NOT NULL,
   time TIME NOT NULL,
   location VARCHAR(50) NOT NULL,
+  is_deleted BOOLEAN DEFAULT FALSE,
   picture_url VARCHAR(500),
   age_limit int,
   additional_info TEXT,
+  deleted_at DATETIME,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (created_by) REFERENCES users(user_id)

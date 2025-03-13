@@ -13,9 +13,11 @@ const healthcheck = require("./platform/healthcheck");
 const getUserInformation = require("./controllers/users/getUserInformation");
 
 const getEvents = require("./controllers/events/getEvents");
+const getVerifiedEvents = require("./controllers/events/getVerifiedEvents");
 const getUnverifiedEvents = require("./controllers/events/getUnverifiedEvents");
 const getEventById = require("./controllers/events/getEventById");
 const postEvent = require("./controllers/events/postEvent");
+const putEventById = require("./controllers/events/putEventById");
 const deleteEvent = require("./controllers/events/deleteEvent");
 
 const router = express.Router();
@@ -40,11 +42,15 @@ router.get("/user-information", authentication, getUserInformation);
 // EVENTS
 router.get("/events", authentication, getEvents);
 
+router.get("/verified-events", authentication, getVerifiedEvents);
+
 router.get("/unverified-events", authentication, getUnverifiedEvents);
 
 router.get("/event/:eventId", authentication, getEventById);
 
 router.post("/event", authentication, postEvent);
+
+router.put("/event/:eventId", authentication, putEventById);
 
 router.delete("/event/:eventId", authentication, deleteEvent);
 

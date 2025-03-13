@@ -1,4 +1,4 @@
-const { submitQuery, camelKeys } = require("~root/lib/database");
+const { submitQuery } = require("~root/lib/database");
 
 const deleteEvent = ({ eventId, userId }) => submitQuery`
     UPDATE events

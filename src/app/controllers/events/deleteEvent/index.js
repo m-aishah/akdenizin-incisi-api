@@ -12,7 +12,7 @@ const deleteEvent = async (req, res) => {
 
     return res.status(200).send({ isDeleted });
   } catch (err) {
-    handleAPIError(res, err);
+    return handleAPIError(res, err);
   }
 };
 

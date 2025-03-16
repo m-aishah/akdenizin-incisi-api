@@ -19,6 +19,7 @@ const getEventById = require("./controllers/events/getEventById");
 const postEvent = require("./controllers/events/postEvent");
 const putEventById = require("./controllers/events/putEventById");
 
+const getTaxiServices = require("./controllers/transportation/getTaxiServices");
 const router = express.Router();
 
 // USER MANAGEMENT
@@ -50,5 +51,8 @@ router.get("/event/:eventId", authentication, getEventById);
 router.post("/event", authentication, postEvent);
 
 router.put("/event/:eventId", authentication, putEventById);
+
+// TRANSPORTATION
+router.get("/taxi-services", getTaxiServices);
 
 module.exports = router;

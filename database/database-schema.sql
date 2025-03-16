@@ -126,7 +126,8 @@ CREATE TABLE conversations(
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   deleted_at DATETIME,
-  FOREIGN KEY (created_by) REFERENCES users(user_id)
+  FOREIGN KEY (created_by) REFERENCES users(user_id),
+  FOREIGN KEY (system_prompt_id) REFERENCES system_prompts(system_prompt_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- itinerary: to keep track of itineraries created by users

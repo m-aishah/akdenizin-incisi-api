@@ -3,17 +3,16 @@ const createSystemPrompt = require("~root/actions/conversations/createSystemProm
 const postSystemPromptSchema = require("./schemas/postSystemPromptSchema");
 
 const postSystemPrompt = async (req, res) => {
-  const { promptText, conversationId, userId } = req.body;
+  const { promptText, userId } = req.body;
 
   try {
     await postSystemPromptSchema.validate(
-      { promptText, conversationId, userId },
+      { promptText, userId },
       { abortEarly: false }
     );
 
     const systemPromptId = await createSystemPrompt({
       promptText,
-      conversationId,
       userId
     });
 

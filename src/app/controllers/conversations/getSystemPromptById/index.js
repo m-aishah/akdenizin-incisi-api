@@ -9,7 +9,7 @@ const getSystemPromptById = async (req, res) => {
       { systemPromptId },
       { abortEarly: false }
     );
-    const systemPrompt = await fetchSystemPromptById(systemPromptId);
+    const systemPrompt = await fetchSystemPromptById({ systemPromptId });
     return res.status(200).send({
       systemPrompt
     });

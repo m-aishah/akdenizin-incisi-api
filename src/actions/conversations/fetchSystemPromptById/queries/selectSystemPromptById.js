@@ -11,7 +11,7 @@ const selectSystemPrompt = ({ systemPromptId }) => submitQuery`
     FROM
         system_prompts
     WHERE
-        system_prompt_id = ${systemPromptId}
+        system_prompt_id = ${systemPromptId};
 `;
 
 module.exports = camelKeys(selectSystemPrompt);

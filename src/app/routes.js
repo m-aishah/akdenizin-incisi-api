@@ -20,6 +20,9 @@ const postEvent = require("./controllers/events/postEvent");
 const putEventById = require("./controllers/events/putEventById");
 const deleteEvent = require("./controllers/events/deleteEvent");
 
+const getSystemPromptById = require("./controllers/conversations/getSystemPromptById");
+const postSystemPrompt = require("./controllers/conversations/postSystemPrompt");
+
 const router = express.Router();
 
 // USER MANAGEMENT
@@ -53,5 +56,15 @@ router.post("/event", authentication, postEvent);
 router.put("/event/:eventId", authentication, putEventById);
 
 router.delete("/event/:eventId", authentication, deleteEvent);
+
+// CONVERSATIONS
+// System Prompt
+router.get(
+  "/system-prompt/:systemPromptId",
+  authentication,
+  getSystemPromptById
+);
+
+router.post("/system-prompt", authentication, postSystemPrompt);
 
 module.exports = router;

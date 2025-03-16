@@ -18,8 +18,10 @@ const getUnverifiedEvents = require("./controllers/events/getUnverifiedEvents");
 const getEventById = require("./controllers/events/getEventById");
 const postEvent = require("./controllers/events/postEvent");
 const putEventById = require("./controllers/events/putEventById");
+const deleteEvent = require("./controllers/events/deleteEvent");
 
 const getTaxiServices = require("./controllers/transportation/getTaxiServices");
+
 const router = express.Router();
 
 // USER MANAGEMENT
@@ -51,6 +53,8 @@ router.get("/event/:eventId", authentication, getEventById);
 router.post("/event", authentication, postEvent);
 
 router.put("/event/:eventId", authentication, putEventById);
+
+router.delete("/event/:eventId", authentication, deleteEvent);
 
 // TRANSPORTATION
 router.get("/taxi-services", getTaxiServices);

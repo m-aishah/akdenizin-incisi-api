@@ -27,6 +27,8 @@ const getUserConversationById = require("./controllers/conversations/getUserConv
 
 const getTaxiServices = require("./controllers/transportation/getTaxiServices");
 const getTaxiServiceById = require("./controllers/transportation/getTaxiServiceById");
+const getBusServices = require("./controllers/transportation/getBusServices");
+const getBusServiceById = require("./controllers/transportation/getBusServiceById");
 
 const router = express.Router();
 
@@ -82,6 +84,11 @@ router.get(
 
 // TRANSPORTATION
 router.get("/taxi-services", authentication, getTaxiServices);
+
 router.get("/taxi-service/:taxiServiceId", authentication, getTaxiServiceById);
+
+router.get("/bus-services", authentication, getBusServices);
+
+router.get("/bus-service/:busServiceId", authentication, getBusServiceById);
 
 module.exports = router;

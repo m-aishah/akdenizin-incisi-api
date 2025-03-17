@@ -3,7 +3,7 @@ const fetchUserConversations = require("~root/actions/conversations/fetchUserCon
 const getUserConversationsSchema = require("./schemas/getUserConversationsSchema");
 
 const getUserConversations = async (req, res) => {
-  const { userId } = req.query;
+  const { userId } = req.user;
 
   try {
     await getUserConversationsSchema.validate(

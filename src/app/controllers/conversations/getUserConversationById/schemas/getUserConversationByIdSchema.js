@@ -6,7 +6,7 @@ const getUserConversationByIdSchema = yup.object().shape({
     .number()
     .required("Conversation ID is required")
     .label("Conversation ID")
-    .Typerror("conversationId must be a number")
+    .typeError("conversationId must be a number")
     .test(
       "DoesConversationExist",
       "The conversation does not exist",

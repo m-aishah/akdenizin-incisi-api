@@ -1,6 +1,6 @@
-const { submitQuery, camelKeys } = require("~root/lib/database");
+const { submitQuery, camelKeys, getFirst } = require("~root/lib/database");
 
-const selectUserConversationById = ({ conversationId }) => submitQuery`
+const selectUserConversationById = ({ eventId }) => submitQuery`
     SELECT
         conversation_id,
         created_by,
@@ -8,11 +8,12 @@ const selectUserConversationById = ({ conversationId }) => submitQuery`
         system_prompt_id,
         created_at,
         updated_at,
-    FROM
+    FROM 
         conversations
-    WHERE
-        conversation_id = ${conversationId}
-        AND is_deleted = FALSE;
+    WHERE 
+        conversation_id = ${eventId}
+    AND 
+        is_deleted = FALSE;
 `;
 
-module.exports = camelKeys(selectUserConversationById);
+module.exports = getFirst(camelKeys(selectUserConversationById));

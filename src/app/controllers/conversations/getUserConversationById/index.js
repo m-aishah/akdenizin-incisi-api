@@ -1,4 +1,4 @@
-const { handleAPIError } = require("~root/utils/handleAPIError");
+const handleAPIError = require("~root/utils/handleAPIError");
 const fetchUserConversationById = require("~root/actions/conversations/fetchUserConversationById");
 const getUserConversationByIdSchema = require("./schemas/getUserConversationByIdSchema");
 

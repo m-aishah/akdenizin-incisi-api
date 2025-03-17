@@ -16,6 +16,8 @@ const selectEvents = () => submitQuery`
         updated_at 
     FROM 
         events
+    WHERE
+        is_deleted = FALSE
 `;
 
 module.exports = camelKeys(selectEvents);

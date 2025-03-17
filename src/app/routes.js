@@ -23,6 +23,7 @@ const deleteEvent = require("./controllers/events/deleteEvent");
 const getSystemPromptById = require("./controllers/conversations/getSystemPromptById");
 const postSystemPrompt = require("./controllers/conversations/postSystemPrompt");
 const getTaxiServices = require("./controllers/transportation/getTaxiServices");
+const getTaxiServiceById = require("./controllers/transportation/getTaxiServiceById");
 
 const router = express.Router();
 
@@ -69,6 +70,7 @@ router.get(
 router.post("/system-prompt", authentication, postSystemPrompt);
 
 // TRANSPORTATION
-router.get("/taxi-services", getTaxiServices);
+router.get("/taxi-services", authentication, getTaxiServices);
+router.get("/taxi-service/:taxiServiceId", authentication, getTaxiServiceById);
 
 module.exports = router;

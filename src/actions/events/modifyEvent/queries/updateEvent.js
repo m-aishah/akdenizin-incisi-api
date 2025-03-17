@@ -17,8 +17,7 @@ const updateEvent = async ({
   pictureUrl = NO_UPDATE,
   ageLimit = NO_UPDATE,
   additionalInfo = NO_UPDATE,
-  isVerified = NO_UPDATE,
-  updatedAt = NO_UPDATE
+  isVerified = NO_UPDATE
 }) => {
   const updates = [];
   if (title !== NO_UPDATE) {
@@ -47,9 +46,6 @@ const updateEvent = async ({
   }
   if (isVerified !== NO_UPDATE) {
     updates.push(sql`is_verified = ${isVerified}`);
-  }
-  if (updatedAt !== NO_UPDATE) {
-    updates.push(sql`updated_at = ${updatedAt}`);
   }
 
   if (updates.length !== 0) {

@@ -119,6 +119,7 @@ CREATE TABLE system_prompts(
 DROP TABLE IF EXISTS conversations;
 CREATE TABLE conversations(
   conversation_id int AUTO_INCREMENT PRIMARY KEY,
+  conversation_title VARCHAR(50) NOT NULL,
   created_by int NOT NULL,
   messages JSON,
   system_prompt_id int,

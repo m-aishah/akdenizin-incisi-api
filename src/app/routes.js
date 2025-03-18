@@ -24,6 +24,7 @@ const getSystemPromptById = require("./controllers/conversations/getSystemPrompt
 const postSystemPrompt = require("./controllers/conversations/postSystemPrompt");
 const getUserConversations = require("./controllers/conversations/getUserConversations");
 const getUserConversationById = require("./controllers/conversations/getUserConversationById");
+const postConversation = require("./controllers/conversations/postConversation");
 
 const getTaxiServices = require("./controllers/transportation/getTaxiServices");
 const getTaxiServiceById = require("./controllers/transportation/getTaxiServiceById");
@@ -79,6 +80,8 @@ router.get(
   authentication,
   getUserConversationById
 );
+
+router.post("/conversation", authentication, postConversation);
 
 // TRANSPORTATION
 router.get("/taxi-services", authentication, getTaxiServices);

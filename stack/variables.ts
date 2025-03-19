@@ -64,8 +64,7 @@ const solutionStackNameFile: string =
 
 // this should be a wildcard certificate arn using AWS ACM in the destination region
 // *.mydomain.com
-const sslArn: string =
-  "arn:aws:acm:eu-west-2:XXXXXX:certificate/xxxxx-xxxxx-xxxx-xxxxx";
+const sslArn: string = process.env.SSL_ARN;
 
 const officeIpCode: string = "78.135.2.38/32";
 

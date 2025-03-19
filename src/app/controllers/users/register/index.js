@@ -1,7 +1,7 @@
+const jwt = require("jsonwebtoken");
 const createUser = require("~root/actions/users/createUser");
 const handleAPIError = require("~root/utils/handleAPIError");
 const postUserSchema = require("./schemas/postUserSchema");
-const jwt = require("jsonwebtoken");
 
 const postUser = async (req, res) => {
   const { firstName, lastName, email, password, userTypeId } = req.body;

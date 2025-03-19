@@ -12,7 +12,8 @@ const login = async (req, res) => {
     });
 
     res.json({
-      accessToken
+      accessToken,
+      user
     });
   } else {
     res.status(401).send("Username or password incorrect");

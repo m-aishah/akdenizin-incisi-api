@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const createUser = require("~root/actions/users/createUser");
 const handleAPIError = require("~root/utils/handleAPIError");
 const postUserSchema = require("./schemas/postUserSchema");
@@ -27,9 +28,16 @@ const postUser = async (req, res) => {
       userTypeId
     });
 
-    res.status(201).send({
-      user
-    });
+    if (user) {
+      const accessToken = jwt.sign({ ...user }, process.env.JWT_SECRET, {
+        expiresIn: "365d" // 1 year
+      });
+
+      res.status(201).json({
+        accessToken,
+        user
+      });
+    }
   } catch (err) {
     handleAPIError(res, err);
   }
